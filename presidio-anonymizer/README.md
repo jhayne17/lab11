@@ -202,3 +202,10 @@ docker-compose up -d
 
 Follow the [API Spec](https://microsoft.github.io/presidio/api-docs/api-docs.html#tag/Anonymizer) for the
 Anonymizer REST API reference details
+### Operator Factory Debugging Notes
+
+- Breakpoint set at operators_factory.py line 133: `operator = operators_by_type.get(operator_name)`
+- Call stack screenshot saved as call-stack.png
+- Number of if/elif branches used to select the operator: 0
+- Data structure used to select operators: Python dict (operator_name -> operator class)
+- Strategy pattern explanation: Each operator implements the same interface (Operator). The factory dynamically selects the operator to apply at runtime, allowing behavior to vary without changing client code.
