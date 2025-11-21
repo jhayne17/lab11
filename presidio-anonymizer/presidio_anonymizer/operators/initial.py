@@ -9,7 +9,11 @@ class Initial(Operator):
         return self.__class__.__name__.lower()
 
     def operate(self, text: str, params: dict = None) -> str:
-        return text
+        if not text:
+            return ""
+        words = text.split()
+        initials = [w[0].upper() + "." for w in words if w]
+        return " ".join(initials)
 
     def validate(self, params: dict = None):
         return
