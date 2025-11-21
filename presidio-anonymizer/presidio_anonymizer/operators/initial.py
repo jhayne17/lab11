@@ -11,9 +11,24 @@ class Initial(Operator):
     def operate(self, text: str, params: dict = None) -> str:
         if not text:
             return ""
+
         words = text.split()
-        initials = [w[0].upper() + "." for w in words if w]
-        return " ".join(initials)
+        initials_list = []
+
+        for word in words:
+            # Find index of first alphanumeric character
+            for i, char in enumerate(word):
+                if char.isalnum():
+                    # Preserve prefix
+                    prefix = word[:i]
+                    initial = char.upper() if char.isalpha() else char
+                    initials_list.append(f"{prefix}{initial}.")
+                    break
+            else:
+                # No alphanumeric character in word
+                initials_list.append(word)
+
+        return " ".join(initials_list)
 
     def validate(self, params: dict = None):
         return
