@@ -30,7 +30,7 @@ class Operator(ABC):
 
     @abstractmethod
     def operator_name(self) -> str:
-        return "initial".
+        return "initial"
         """Return operator name."""
         pass
 
