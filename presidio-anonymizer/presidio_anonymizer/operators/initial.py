@@ -6,7 +6,7 @@ class Initial(Operator):
         return OperatorType.Anonymize
 
     def operator_name(self) -> str:
-        return self.__class__.__name__.lower()
+        return "initial"
 
     def operate(self, text: str, params: dict = None) -> str:
         if not text:
